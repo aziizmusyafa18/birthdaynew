@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Kak Jaisyi 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Meteor canvas -->
+  <canvas id="meteorCanvas"></canvas>
+
+  <!-- Particle text canvas (countdown, hbd, date, age) -->
+  <canvas id="particleCanvas" class="hidden"></canvas>
+
+  <!-- Audio -->
+  <audio id="bgMusic" src="mp3/stuckwithyou.mp3" loop></audio>
+
+  <!-- SCENE 1: Countdown (dirender di particleCanvas) -->
+  <div class="scene hidden" id="scene-countdown"></div>
+
+  <!-- SCENE 2: HBD (dirender di particleCanvas) -->
+  <div class="scene hidden" id="scene-hbd"></div>
+
+  <!-- SCENE 3: Date (dirender di particleCanvas) -->
+  <div class="scene hidden" id="scene-date"></div>
+
+  <!-- SCENE 4: Age (dirender di particleCanvas) -->
+  <div class="scene hidden" id="scene-age"></div>
+
+  <!-- SCENE 5: Album Foto -->
+  <div class="scene hidden" id="scene-album">
+    <div class="album-container" id="album-container">
+
+      <!-- Cover Album -->
+      <div class="album-cover" id="album-cover">
+        <div class="cover-front">
+          <div class="cover-icon">♥</div>
+          <div class="cover-subtitle">ketuk untuk membuka ~</div>
+        </div>
+      </div>
+
+      <!-- Buku terbuka: spine di tengah, halaman kiri & kanan -->
+      <div class="book-open hidden" id="book-open">
+
+        <!-- Halaman kiri (halaman sebelumnya / back page) -->
+        <div class="book-page book-page-left" id="book-left">
+          <div class="book-page-inner" id="book-left-inner"></div>
+        </div>
+
+        <!-- Spine (punggung buku) -->
+        <div class="book-spine"></div>
+
+        <!-- Halaman kanan (halaman aktif) -->
+        <div class="book-page book-page-right" id="book-right">
+          <div class="book-page-inner" id="book-right-inner"></div>
+
+          <!-- Tap area kiri (prev) -->
+          <div class="tap-area tap-prev" id="tap-prev"></div>
+          <!-- Tap area kanan (next) -->
+          <div class="tap-area tap-next" id="tap-next"></div>
+        </div>
+
+        <!-- Lapisan flip animasi (halaman yang sedang dibalik) -->
+        <div class="flip-layer hidden" id="flip-layer">
+          <div class="flip-page" id="flip-page">
+            <div class="flip-front" id="flip-front"></div>
+            <div class="flip-back"  id="flip-back"></div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end book-open -->
+
+    </div>
+    <!-- end album-container -->
+  </div>
+  <!-- end scene-album -->
+
+  <!-- SCENE 6: Love Particle -->
+  <div class="scene hidden" id="scene-love"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
