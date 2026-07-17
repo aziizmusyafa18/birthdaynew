@@ -164,6 +164,7 @@ html, body {
   color: #a07050;
   font-style: italic;
   opacity: 0.85;
+  letter-spacing: 0.05em;
 }
 
 /* ── Buku Terbuka ── */
@@ -240,6 +241,7 @@ html, body {
   line-height: 1.55;
   text-shadow: 0 0 10px #c8845a44;
   word-break: break-word;
+  letter-spacing: 0.05em;
 }
 
 /* Frame foto */
@@ -266,7 +268,7 @@ html, body {
   font-size: clamp(0.65rem, 1.5vw, 0.8rem);
   color: #7a5030;
   font-family: 'Outfit', 'Montserrat', sans-serif;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   opacity: 0.7;
   text-align: center;
 }
@@ -278,7 +280,7 @@ html, body {
   color: #c8845a;
   text-align: center;
   opacity: 0.85;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
 }
 
 /* Tap areas */
@@ -427,7 +429,7 @@ html, body {
   transform: translateY(14px);
   transition: opacity 1s ease, transform 1s ease;
   line-height: 1.5;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   font-size: clamp(0.9rem, 3vw, 1.4rem);
 }
 
@@ -488,7 +490,7 @@ html, body {
     font-size: clamp(0.95rem, 4.2vw, 1.15rem);
     line-height: 1.7;
     text-shadow: 0 0 12px #c8845a66, 0 2px 6px #00000099;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.08em;
   }
 
   /* Cover lebih ramping di HP */
@@ -512,15 +514,18 @@ html, body {
   .cover-subtitle {
     font-size: clamp(0.88rem, 2.5vw, 1.05rem);
     line-height: 1.5;
+    letter-spacing: 0.05em;
   }
 
   .book-page-num {
     font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    letter-spacing: 0.08em;
   }
 
   .book-lanjut-hint {
     font-size: clamp(0.8rem, 2.2vw, 0.95rem);
     line-height: 1.5;
+    letter-spacing: 0.08em;
   }
 }
 
@@ -529,6 +534,7 @@ html, body {
   .book-caption {
     font-size: 0.9rem;
     line-height: 1.6;
+    letter-spacing: 0.05em;
   }
   .cover-title {
     font-size: 1.3rem;
@@ -557,6 +563,7 @@ html, body {
     font-size: 0.8rem;
     line-height: 1.55;
     text-shadow: 0 0 10px #c8845a66, 0 2px 6px #00000099;
+    letter-spacing: 0.05em;
   }
 
   .love-words {
@@ -568,6 +575,7 @@ html, body {
     font-size: clamp(0.85rem, 2.8vw, 1.1rem);
     line-height: 1.5;
     text-shadow: 0 0 14px #c8845a77, 0 2px 8px #00000099;
+    letter-spacing: 0.08em;
   }
 }
 

@@ -299,12 +299,29 @@ function clearParticleText(cb) {
 
 // ── AUDIO ─────────────────────────────────────────────────────
 const music = document.getElementById('bgMusic');
+let musicStarted = false;
+
 function tryPlayMusic() {
+  if (musicStarted) return;
+  musicStarted = true;
   music.volume = 0.5;
   music.play().catch(() => {
-    document.addEventListener('click', () => music.play(), { once: true });
+    console.log('Autoplay blocked');
   });
 }
+
+// Handle tab visibility: pause saat tab hidden, resume saat visible
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    music.pause();
+  } else {
+    if (musicStarted) {
+      music.play().catch(() => {
+        console.log('Resume musik failed');
+      });
+    }
+  }
+});
 
 // ── ALBUM LOGIC (Buku 3D) ─────────────────────────────────────
 let currentPage = 0;
@@ -313,10 +330,10 @@ let isFlipping   = false;
 
 // Data halaman
 const PAGE_DATA = [
-  { caption: '"Kamu adalah alasan terbaik dari semua momen ini 🤍"', img: 'img/foto1.jpeg', alt: 'Foto 1' },
-  { caption: '"Setiap senyummu adalah favoritku 😊"',                 img: 'img/foto2.jpeg', alt: 'Foto 2' },
-  { caption: '"Bersamamu, waktu terasa singkat 💛"',                   img: 'img/foto3.jpeg', alt: 'Foto 3' },
-  { caption: '"Happy Birthday, semoga selalu bahagia & dicintai 🎂🤎"', img: 'img/foto4.jpeg', alt: 'Foto 4', isLast: true },
+  { caption: 'Selamat ulang tahun kak Jaysyi 🕊️', img: 'img/foto1.jpeg', alt: 'Foto 1' },
+  { caption: 'Semoga hari harimu menyenangkan ..',                      img: 'img/foto2.jpeg', alt: 'Foto 2' },
+  { caption: 'Dan semua hal baik menyertimu 🙂',                        img: 'img/foto3.jpeg', alt: 'Foto 3' },
+  { caption: 'enjoy your special day✨',                                img: 'img/foto4.jpeg', alt: 'Foto 4', isLast: true },
 ];
 
 const albumCover  = document.getElementById('album-cover');
@@ -457,12 +474,7 @@ window.prevPhoto = prevPhoto;
 // ── LOVE SCENE ────────────────────────────────────────────────
 const sceneLove    = document.getElementById('scene-love');
 
-const LOVE_LINES = [
-  { text: 'Selamat ulang tahun, sayangku 🤎', size: '1.5rem' },
-  { text: 'Semoga setiap harimu seindah senyummu', size: '1.1rem' },
-  { text: 'Terima kasih sudah ada & menjadi kamu', size: '1.1rem' },
-  { text: '— I love you, always —', size: '1.3rem' },
-];
+const LOVE_LINES = [];
 
 function goToLove() {
   // sembunyikan album
@@ -538,7 +550,7 @@ function step6_love() {
     }
     particleRAF = requestAnimationFrame(loop);
 
-    // Setelah mayoritas partikel settled, munculkan kata-kata
+    // Setelah mayoritas partikel settled, munculkan tombol restart
     if (allSettled && !wordsShown) {
       wordsShown = true;
       setTimeout(showLoveWords, 600);
@@ -635,7 +647,6 @@ const BROWN_WARM   = '#e8a060';
 const BROWN_SOFT   = '#f5deb3';
 
 function step1_countdown() {
-  tryPlayMusic();
   const nums = ['3', '2', '1'];
   let i = 0;
   const fs  = Math.round(window.innerWidth * 0.38);
@@ -643,31 +654,28 @@ function step1_countdown() {
 
   function nextNum() {
     if (i < nums.length) {
+      if (i === 0) tryPlayMusic();
       renderParticleText([nums[i]], BROWN_BRIGHT, fs);
       i++;
       setTimeout(() => clearParticleText(nextNum), 2400);
     } else {
       renderParticleText(['\u2726'], '#ffeaa0', fsStar);
-      setTimeout(() => clearParticleText(step2_hbd), 2000);
+      setTimeout(() => clearParticleText(step1b_hbd), 2000);
     }
   }
   nextNum();
 }
 
-function step2_hbd() {
-  // Font size responsif: di laptop penuh, di HP lebih kecil
-  // getTextPixels akan auto-shrink jika masih terlalu lebar
+function step1b_hbd() {
   const fs = Math.round(window.innerWidth * 0.18);
-
-  // "Happy" dan "Birthday" dua baris — masing-masing memenuhi lebar layar
   renderParticleText(['Happy', 'Birthday'], BROWN_SOFT, fs);
-  setTimeout(() => {
-    clearParticleText(() => {
-      const fsName = Math.round(window.innerWidth * 0.16);
-      renderParticleText(['Kak Jaisyi ~'], BROWN_BRIGHT, fsName);
-      setTimeout(() => clearParticleText(step3_date), 5000);
-    });
-  }, 5500);
+  setTimeout(() => clearParticleText(step2_hbd), 5500);
+}
+
+function step2_hbd() {
+  const fsName = Math.round(window.innerWidth * 0.16);
+  renderParticleText(['Kak Jaysyi ~'], BROWN_BRIGHT, fsName);
+  setTimeout(() => clearParticleText(step3_date), 4000);
 }
 
 function step3_date() {
@@ -677,13 +685,12 @@ function step3_date() {
 }
 
 function step4_age() {
-  const fs = Math.round(window.innerWidth * 0.16);
-  renderParticleText(['Happy ' + AGE + 'th'], BROWN_BRIGHT, fs);
-  setTimeout(() => clearParticleText(step5_album), 5000);
+  // Langsung lanjut ke love scene
+  step5_album();
 }
 
 function step5_album() {
-  showAlbumScene();
+  step6_love();
 }
 
 // ── BOOT ──────────────────────────────────────────────────────
