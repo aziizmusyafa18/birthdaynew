@@ -18,7 +18,10 @@
   <canvas id="particleCanvas" class="hidden"></canvas>
 
   <!-- Audio -->
-  <audio id="bgMusic" src="mp3/stuckwithyou.mp3" loop></audio>
+  <audio id="bgMusic" src="mp3/stuckwithyou.mp3" loop muted playsinline></audio>
+
+  <!-- Music Control Button -->
+  <button id="musicToggle" class="music-toggle" title="Toggle music">🔊</button>
 
   <!-- SCENE 1: Countdown (dirender di particleCanvas) -->
   <div class="scene hidden" id="scene-countdown"></div>

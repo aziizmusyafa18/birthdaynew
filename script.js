@@ -299,23 +299,46 @@ function clearParticleText(cb) {
 
 // ── AUDIO ─────────────────────────────────────────────────────
 const music = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
 let musicStarted = false;
+let musicEnabled = true;
 
 function tryPlayMusic() {
-  if (musicStarted) return;
+  if (!musicEnabled || musicStarted) return;
   musicStarted = true;
+  music.muted = false;
   music.volume = 0.5;
   music.play().catch(() => {
-    console.log('Autoplay blocked');
+    console.log('Autoplay blocked, user can enable via button');
   });
 }
+
+// Music toggle button
+musicToggle.addEventListener('click', () => {
+  musicEnabled = !musicEnabled;
+  if (musicEnabled) {
+    music.muted = false;
+    music.volume = 0.5;
+    if (!music.paused) {
+      musicToggle.textContent = '🔊';
+    } else {
+      music.play().catch(() => {
+        console.log('Play failed');
+      });
+      musicToggle.textContent = '🔊';
+    }
+  } else {
+    music.pause();
+    musicToggle.textContent = '🔇';
+  }
+});
 
 // Handle tab visibility: pause saat tab hidden, resume saat visible
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     music.pause();
   } else {
-    if (musicStarted) {
+    if (musicStarted && musicEnabled) {
       music.play().catch(() => {
         console.log('Resume musik failed');
       });

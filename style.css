@@ -23,6 +23,33 @@ html, body {
   z-index: 0;
 }
 
+/* ===== MUSIC TOGGLE ===== */
+.music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: transparent;
+  border: 1px solid #7a4020;
+  color: #c8845a;
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.music-toggle:hover {
+  opacity: 1;
+  background: #3a1a06;
+  box-shadow: 0 0 15px #c8845a44;
+}
+
 /* ===== SCENE ===== */
 .scene {
   position: fixed;
