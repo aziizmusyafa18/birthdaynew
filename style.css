@@ -191,7 +191,8 @@ html, body {
   color: #a07050;
   font-style: italic;
   opacity: 0.85;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
+  text-shadow: none;
 }
 
 /* ── Buku Terbuka ── */
@@ -266,9 +267,9 @@ html, body {
   color: #f0d8b0;
   text-align: center;
   line-height: 1.55;
-  text-shadow: 0 0 10px #c8845a44;
+  text-shadow: none;
   word-break: break-word;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
 }
 
 /* Frame foto */
@@ -295,7 +296,7 @@ html, body {
   font-size: clamp(0.65rem, 1.5vw, 0.8rem);
   color: #7a5030;
   font-family: 'Outfit', 'Montserrat', sans-serif;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   opacity: 0.7;
   text-align: center;
 }
@@ -307,7 +308,7 @@ html, body {
   color: #c8845a;
   text-align: center;
   opacity: 0.85;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 /* Tap areas */
@@ -451,12 +452,12 @@ html, body {
   font-weight: 600;
   color: #f5dbb8;
   text-align: center;
-  text-shadow: 0 0 16px #c8845a99, 0 2px 8px #00000088;
+  text-shadow: none;
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 1s ease, transform 1s ease;
   line-height: 1.5;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   font-size: clamp(0.9rem, 3vw, 1.4rem);
 }
 
@@ -516,8 +517,8 @@ html, body {
   .book-caption {
     font-size: clamp(0.95rem, 4.2vw, 1.15rem);
     line-height: 1.7;
-    text-shadow: 0 0 12px #c8845a66, 0 2px 6px #00000099;
-    letter-spacing: 0.08em;
+    text-shadow: none;
+    letter-spacing: 0.14em;
   }
 
   /* Cover lebih ramping di HP */
@@ -534,25 +535,48 @@ html, body {
   .love-word-line {
     font-size: clamp(1rem, 4.5vw, 1.3rem);
     line-height: 1.6;
-    text-shadow: 0 0 18px #c8845a88, 0 2px 10px #00000099;
-    letter-spacing: 0.04em;
+    text-shadow: none;
+    letter-spacing: 0.16em;
   }
 
   .cover-subtitle {
     font-size: clamp(0.88rem, 2.5vw, 1.05rem);
     line-height: 1.5;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.12em;
   }
 
   .book-page-num {
     font-size: clamp(0.7rem, 1.8vw, 0.9rem);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
   }
 
   .book-lanjut-hint {
     font-size: clamp(0.8rem, 2.2vw, 0.95rem);
     line-height: 1.5;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Layar 320-425px (mobile optimization) */
+@media (min-width: 320px) and (max-width: 425px) {
+  .book-caption {
+    letter-spacing: 0.24em;
+  }
+
+  .cover-subtitle {
+    letter-spacing: 0.22em;
+  }
+
+  .love-word-line {
+    letter-spacing: 0.28em;
+  }
+
+  .book-page-num {
+    letter-spacing: 0.22em;
+  }
+
+  .book-lanjut-hint {
+    letter-spacing: 0.22em;
   }
 }
 
@@ -561,13 +585,15 @@ html, body {
   .book-caption {
     font-size: 0.9rem;
     line-height: 1.6;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.18em;
+    text-shadow: none;
   }
   .cover-title {
     font-size: 1.3rem;
   }
   .love-word-line {
     font-size: 0.95rem;
+    letter-spacing: 0.20em;
   }
 }
 
@@ -589,8 +615,8 @@ html, body {
   .book-caption {
     font-size: 0.8rem;
     line-height: 1.55;
-    text-shadow: 0 0 10px #c8845a66, 0 2px 6px #00000099;
-    letter-spacing: 0.05em;
+    text-shadow: none;
+    letter-spacing: 0.14em;
   }
 
   .love-words {
@@ -601,8 +627,8 @@ html, body {
   .love-word-line {
     font-size: clamp(0.85rem, 2.8vw, 1.1rem);
     line-height: 1.5;
-    text-shadow: 0 0 14px #c8845a77, 0 2px 8px #00000099;
-    letter-spacing: 0.08em;
+    text-shadow: none;
+    letter-spacing: 0.16em;
   }
 }
 

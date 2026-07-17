@@ -253,9 +253,9 @@ function renderParticleText(lines, color, fontSize = 72) {
       if (!p.settled) p.draw(pCtx);
     }
 
-    // Pass 2: partikel yang sudah settled — dengan glow tipis (jumlahnya makin banyak seiring waktu)
-    pCtx.shadowBlur  = 8;
-    pCtx.shadowColor = color;
+    // Pass 2: partikel yang sudah settled — tanpa glow
+    pCtx.shadowBlur  = 0;
+    pCtx.shadowColor = 'transparent';
     for (const p of particles) {
       if (p.settled) p.draw(pCtx);
     }
